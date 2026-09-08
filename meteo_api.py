@@ -13,7 +13,7 @@ def cerca_coordinate(nome_citta):
     se la citta' non viene trovata.
     """
     parametri = {
-        "nome" : nome_citta, 
+        "name" : nome_citta, 
         "count" : 1,
         "language" : "it",
         "format" : "json"
