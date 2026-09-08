@@ -21,5 +21,3 @@ def stampa_statistiche(statistiche) :
 
     freddo = statistiche["giorno_piu_freddo"]
     print(f"Giorno piu' freddo: {freddo['data']} ({freddo['temp_min']:.1f}°C)")
-
-
