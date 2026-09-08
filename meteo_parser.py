@@ -24,7 +24,7 @@ def calcola_statistiche(previsioni):
     """
     Calcola media delle temperature massime, giorno piu' caldo
     e giorno piu' freddo (basandosi su temp_max).
-    Ritorna un dizionario con le statistiche.
+    Ritorna un dizionario con le statistiche. test
     """
     totale = 0
     giorno_piu_caldo = previsioni[0]
