@@ -1,7 +1,7 @@
 # main.py — fornito dal capogruppo, coordina tutto il progetto
 from meteo_api import cerca_coordinate, scarica_dati_storici
 # from meteo_parser import analizza_dati_storici, calcola_statistiche
-# from meteo_file import salva_json, scrivi_report
+from meteo_file import salva_json, scrivi_report
 # from meteo_display import stampa_previsioni, stampa_statistiche
 
 DATA_INIZIO = "2026-08-31"
@@ -27,8 +27,8 @@ else:
         statistiche = calcola_statistiche(previsioni)
 
         # STEP 3 — Studente 3: salva su file
-        # salva_json(previsioni, "previsioni_storiche.json")
-        # scrivi_report(previsioni, statistiche, CITTA, "report_meteo_storico.txt")
+        salva_json(previsioni, "previsioni_storiche.json")
+        scrivi_report(previsioni, statistiche, CITTA, "report_meteo_storico.txt")
 
         # STEP 4 — Studente 4: stampa a schermo
         # stampa_previsioni(previsioni, CITTA)
