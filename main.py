@@ -1,6 +1,6 @@
 # main.py — fornito dal capogruppo, coordina tutto il progetto
 from meteo_api import cerca_coordinate, scarica_dati_storici
-# from meteo_parser import analizza_dati_storici, calcola_statistiche
+from meteo_parser import analizza_dati_storici, calcola_statistiche
 from meteo_file import salva_json, scrivi_report
 # from meteo_display import stampa_previsioni, stampa_statistiche
 
@@ -25,6 +25,8 @@ else:
         # STEP 2 — Studente 2: trasforma il JSON e calcola le statistiche
         previsioni = analizza_dati_storici(dati)
         statistiche = calcola_statistiche(previsioni)
+        print(previsioni)
+        print(statistiche)
 
         # STEP 3 — Studente 3: salva su file
         salva_json(previsioni, "previsioni_storiche.json")
