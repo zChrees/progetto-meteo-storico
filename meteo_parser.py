@@ -17,7 +17,7 @@ def analizza_dati_storici(dati):
         }
         previsioni.append(previsione)
 
-        return previsioni
+    return previsioni
 
 
 def calcola_statistiche(previsioni):
