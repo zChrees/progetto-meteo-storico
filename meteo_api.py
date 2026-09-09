@@ -6,6 +6,28 @@ import requests
 URL_GEOCODING = "https://geocoding-api.open-meteo.com/v1/search"
 URL_ARCHIVIO = "https://archive-api.open-meteo.com/v1/archive"
 
+def scarica_previsioni_multi_citta(lista_nomi_citta, data_inizio, data_fine):
+    """
+    Per ogni citta' nella lista, cerca le coordinate e scarica le
+    previsioni. Ritorna un dizionario {nome_citta: dati_previsioni}.
+    Se una citta' non viene trovata, la salta e continua con le altre.
+    """
+    dati_per_citta = {}
+
+    for nome_citta in lista_nomi_citta:
+        coordinate = cerca_coordinate(nome_citta)
+
+        if coordinate is None:
+            print(f"Città non trovata, salto: {nome_citta}")
+            continue
+
+        latitudine=coordinate[0]
+        longitudine=coordinate[1]
+        dati = scarica_dati_storici(latitudine, longitudine, data_inizio, data_fine)
+        dati_per_citta[nome_citta] = dati
+
+    return dati_per_citta
+
 def cerca_coordinate(nome_citta):
     """
     Chiede all'API di geocoding le coordinate di una citta'.
@@ -64,3 +86,10 @@ def scarica_dati_storici(latitudine, longitudine, data_inizio, data_fine):
     except Exception as e:
         print("Errore: Generale, qualcosa è andato storto, controlla meglio dentro il pc, togli la polvere, lava il processore con lo sgrassatore alla candegina, usa la carta vetrata per togliere la sporcizia incrostata, e riprova, scusa per il disagio e grazie per averci contattato :D")
         return None
+
+if __name__ == "__main__":
+    DATA_INIZIO = "2026-08-31"
+    DATA_FINE = "2026-09-06"
+    lista_nomi_citta=["palermo", "catania", "palermo", "bergamo"]
+    previsioni=scarica_previsioni_multi_citta(lista_nomi_citta, DATA_INIZIO, DATA_FINE)
+    print(previsioni)
