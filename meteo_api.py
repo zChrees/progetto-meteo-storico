@@ -29,8 +29,6 @@ def cerca_coordinate(nome_citta):
     else:
         print("Citta' non trovata")
         return None
-    pass
-
 
 def scarica_dati_storici(latitudine, longitudine, data_inizio, data_fine):
     """
@@ -52,13 +50,17 @@ def scarica_dati_storici(latitudine, longitudine, data_inizio, data_fine):
         if risposta.status_code == 200:
             return risposta.json()
         else:
-            print("Errore: ")
+            print("Errore: non so che errore sia")
             return None
 
     except requests.exceptions.Timeout:
-        print("Errore: ")
+        print("Errore: non so che errore sia")
         return None
 
     except requests.exceptions.ConnectionError:
-        print("Errore: ")
+        print("Errore: non so che errore sia")
+        return None
+
+    except requests.exceptions.RequestException:
+        print("Errore: Generale, qualcosa è andato storto, controlla meglio se non hai i batteri o i funghi nel pc")
         return None
