@@ -54,13 +54,13 @@ def scarica_dati_storici(latitudine, longitudine, data_inizio, data_fine):
             return None
 
     except requests.exceptions.Timeout:
-        print("Errore: non so che errore sia")
+        print("Errore: sia non che so errore")
         return None
 
     except requests.exceptions.ConnectionError:
-        print("Errore: non so che errore sia")
+        print("Errore: errore che sia non so")
         return None
 
-    except requests.exceptions.RequestException:
-        print("Errore: Generale, qualcosa è andato storto, controlla meglio se non hai i batteri o i funghi nel pc")
+    except Exception as e:
+        print("Errore: Generale, qualcosa è andato storto, controlla meglio dentro il pc, togli la polvere, lava il processore con lo sgrassatore alla candegina, usa la carta vetrata per togliere la sporcizia incrostata, e riprova, scusa per il disagio e grazie per averci contattato :D")
         return None
